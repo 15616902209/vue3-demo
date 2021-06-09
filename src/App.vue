@@ -1,16 +1,19 @@
 <template>
   <Index/>
-  <Test/>
+<!--  <Test/>-->
+  <ChangeColor/>
 </template>
 
 <script>
 import Index from './components/Index.vue'
-import Test from './components/page/Test.vue'
+// import Test from './components/page/Test.vue'
+import ChangeColor from './components/page/ChangeColor.vue'
 export default {
   name: 'App',
   components: {
     Index,
-    Test
+    // Test,
+    ChangeColor
   }
 }
 </script>

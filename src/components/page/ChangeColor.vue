@@ -1,15 +1,24 @@
 <template>
   <div class="bgDiv">
   </div>
-  <a href="#" class="button">
-    <span>
-       <h1 class="font"> 主题配色 </h1>
-       <el-button @click="closeInterval()" style="background: rgba(0,0,0,0)">点击暂停</el-button>
-       <el-button @click="initInterval()" style="background: rgba(0,0,0,0)">点击开始</el-button>
-    </span>
-  </a>
+  <h3 class="font-color1"> 主题配色 </h3>
+  <span class="font-color2">暂停后可用取色器获取喜欢的颜色</span>
+  <hr/>
+  <el-button @click="closeInterval()" style="background: rgba(0,0,0,0)">点击暂停</el-button>
+  <el-button @click="initInterval()" style="background: rgba(0,0,0,0)">点击开始</el-button>
   <br/>
-  <el-input type="textarea" placeholder="placeholder" v-model="model" style="width: 400px;">
+  <br/>
+
+
+  <el-button class="colorButton">
+  </el-button>
+
+  <el-button class="colorButton">
+  </el-button>
+
+
+  <br/>
+  <el-input type="textarea" placeholder="placeholder" v-model="model" style=" width: 400px;">
 
   </el-input>
 </template>
@@ -52,7 +61,7 @@ export default {
       //开始前先清除以前的定时器
       this.closeInterval();
       //定时器
-      this.timeInterval = setInterval(this.changeColor, 2000);
+      this.timeInterval = setInterval(this.changeColor, 1000);
     },
     closeInterval() {
       //清除定时器
@@ -63,8 +72,27 @@ export default {
 </script>
 
 <style>
-.font {
+
+.font-color1 {
   color: rgba(v-bind(red), v-bind(blue), v-bind(green), v-bind(transparent))
+}
+
+.font-color2 {
+  color: rgba(v-bind(blue), v-bind(red), v-bind(green), v-bind(transparent))
+}
+
+
+.colorButton{
+  background-image: linear-gradient(
+      90deg,
+      rgba(v-bind(red), v-bind(green), v-bind(blue), v-bind(transparent)),
+      rgba(v-bind(green), v-bind(red), v-bind(blue), 0.5),
+      rgba(v-bind(blue), v-bind(red), v-bind(green), 0.7)
+  );
+  width: 300px;
+  height: 120px;
+  border: 0px;
+  border-radius: 7px;
 }
 
 .bgDiv {
@@ -72,7 +100,7 @@ export default {
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 900px;
+  height: 1080px;
   z-index: -999;
   background-image: linear-gradient(
       90deg,
@@ -80,31 +108,5 @@ export default {
       rgba(v-bind(blue), v-bind(red), v-bind(green), 0.5),
       rgba(v-bind(red), v-bind(green), v-bind(blue), v-bind(transparent))
   );
-}
-
-.button {
-  /*background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 100%);*/
-  background-image: linear-gradient(
-      90deg,
-      rgba(v-bind(red), v-bind(green), v-bind(blue), v-bind(transparent)),
-      rgba(v-bind(green), v-bind(red), v-bind(blue), 0.5),
-      rgba(v-bind(blue), v-bind(red), v-bind(green), 0.7)
-  );
-  display: inline-block;
-  padding: 3px;
-  border-radius: 7px;
-  text-decoration: none;
-  position: relative;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.button span {
-  display: inline-block;
-  /*background: #191919;*/
-  color: white;
-  padding: 2rem 5rem;
-  border-radius: 5px;
-  font-size: 3rem;
 }
 </style>
